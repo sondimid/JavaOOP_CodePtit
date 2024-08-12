@@ -1,4 +1,39 @@
 import java.util.*;
+class Item {
+    private String id="MH0",name,unit;
+    private int purchasePrice,sellPrice;
+
+    public Item(String name, String unit, int purchasePrice, int sellPrice) {
+        this.name = name;
+        this.unit = unit;
+        this.purchasePrice = purchasePrice;
+        this.sellPrice = sellPrice;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getPurchasePrice() {
+        return purchasePrice;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public int getSellPrice() {
+        return sellPrice;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+}
 
 public class Main {
     public static void main(String[] args) {
@@ -26,7 +61,7 @@ public class Main {
         });
         for(Item i : I){
             int profit = i.getSellPrice()-i.getPurchasePrice();
-            System.out.println(i.getId()+" "+i.getName()+" "+profit+" "+i.getSellPrice()+" "+i.getPurchasePrice());
+            System.out.println(i.getId()+" "+i.getName()+" "+i.getUnit()+" "+i.getPurchasePrice()+" "+i.getSellPrice()+" "+profit);
         }
     }
 }

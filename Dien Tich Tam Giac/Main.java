@@ -1,4 +1,33 @@
-import java.util.Scanner;
+import java.util.*;
+class Point {
+
+    private double x,y;
+
+    public Point(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+    public double distance(Point A){
+        return Math.sqrt((this.x-A.x)*(this.x-A.x)+(this.y-A.y)*(this.y-A.y));
+    }
+
+}
 
 public class Main {
     public static void main (String []arg){
@@ -11,11 +40,12 @@ public class Main {
             double a = C.distance(B);
             double b = A.distance(C);
             double c = B.distance(A);
-            if(a+b<=c || b+c<=a || c+a<=b) System.out.println("INVALID");
+            if(a+b<=c || b+c<=a || c+a<=b) System.out.print("INVALID");
             else{
-                System.out.printf("%.2f",0.25*Math.sqrt((a+b+c)*(a+b-c)*(a+c-b)*(b+c-a)));
+                System.out.printf("%.2f",Math.sqrt((a + b + c) * (a + b - c ) * (-a + b + c) * (a - b + c)) * 0.25);
                 System.out.println();
             }
+            System.out.println();
         }
     }
 }

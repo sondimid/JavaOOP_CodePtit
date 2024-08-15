@@ -1,7 +1,4 @@
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.HashMap;
+import java.util.*;
 
 class Shipment {
     private String id,name;
@@ -66,6 +63,13 @@ public class Main {
             list.add(s);
             sc.nextLine();
         }
+        Collections.sort(list, new Comparator<Shipment>() {
+            @Override
+            public int compare(Shipment o1, Shipment o2) {
+                if(o1.getDiscount() > o2.getDiscount()) return -1;
+                return 1;
+            }
+        });
         for(Shipment s :list){
             System.out.println(s.getId()+" "+s.getName()+" "+s.getDiscount()+" "+s.getTotal());
         }

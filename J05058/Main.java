@@ -1,7 +1,8 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 import java.text.DecimalFormat;
-class Student {
+class Student implements Comparable<Student>{
     private double toan,ly,hoa,sum,ut;
     private String name,id,tt;
     public DecimalFormat df = new DecimalFormat();
@@ -54,9 +55,17 @@ class Student {
 
     @Override
     public String toString() {
-        return String.format("%s %s %s %s %s", id, name, df.format(ut), df.format(sum), tt);
+        return String.format("%s %s %s %s %s", id, name, df.format(ut), df.format(sum+ut), tt);
     }
 
+    @Override
+    public int compareTo(Student o) {
+        if(this.sum + this.ut == o.sum + o.ut){
+            return this.id.compareTo(o.id);
+        }
+        else if(this.sum + this.ut > o.sum + o.ut) return -1;
+        return 1;
+    }
 }
 
 public class Main {
@@ -74,6 +83,7 @@ public class Main {
             double score3 = sc.nextDouble();
             list.add(new Student(id, name, score1, score2, score3));
         }
+        Collections.sort(list);
         for(Student student : list){
             System.out.println(student);
         }

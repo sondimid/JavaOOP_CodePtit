@@ -67,6 +67,7 @@ class Person implements Comparable<Person>{
     public int compareTo(Person o) {
         return Long.compare(this.getFinal(), o.getFinal());
     }
+
 }
 public class Main {
     public static void main(String[] arg) {
@@ -90,6 +91,12 @@ public class Main {
                 }
             }
         }
+        Collections.sort(newList, new Comparator<Person>() {
+            @Override
+            public int compare(Person o1, Person o2) {
+                return Integer.compare(o1.getRank(), o2.getRank());
+            }
+        });
         for(Person person : newList){
             System.out.println(person);
         }

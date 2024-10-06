@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Student {
+public class Student implements Comparable<Student>{
     private String name;
     private Date start, end;
 
@@ -16,6 +16,17 @@ public class Student {
     }
 
     public long getDuration() {
-        return end.getTime() - start.getTime();
+        return (end.getTime() - start.getTime())/(1000*60);
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        if(this.getDuration() != o.getDuration()) return -Long.compare(this.getDuration(), o.getDuration());
+        return this.name.compareTo(o.name);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s %d", name,getDuration());
     }
 }
